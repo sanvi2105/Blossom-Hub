@@ -1,0 +1,785 @@
+:root{
+    --pink:#e84393;
+}
+
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    outline:none;
+    border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition:2s linear; /*linear transition*/
+}
+
+
+
+
+header{
+    position:fixed;
+    top:0;left:0;right:0;
+    padding:2rem 9%;
+    display:flex;
+    align-items: center; /*vertically centered align*/
+    justify-content: space-between;
+    z-index:1000; /*very high priority in stacking context*/
+    box-shadow:0.5rem 1rem rgba(0,0,0,0.1);
+    background-color: white;
+
+    
+    
+
+}
+
+html{
+    font-size:62.5%;
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    overflow-x:hidden; /*extra content will not be visible if outer box is small*/
+
+}
+
+section{
+    padding:2rem 9%;
+}
+
+header .logo{
+    font-size:3rem;
+    color:#333;
+    font-weight:bolder;
+
+     
+}
+
+header .logo span{
+    color:var(--pink); /*good to use for design in theme*/
+
+}
+
+
+
+header .navbar a{
+    font-size:2rem;
+    color:#666;
+    padding:0rem 1.5rem; /*to get some space in between*/
+
+    
+}
+
+header .navbar a:hover{
+    color:var(--pink);
+    margin-left:1.5rem;
+}
+
+header .icons a{
+    font-size:3rem;
+    color:#333;
+   
+
+    
+}
+header .icons a:hover{
+    color:var(--pink);
+   margin:0px 10px;
+}
+
+
+
+header #toggler{
+    display:none; /*chk box hid*/
+}
+
+header .fa-bars{ /*designing of hamburger icon*/
+    font-size:3rem;
+    color:#333;
+    border-radius:0.5rem;
+    padding: 5rem 1.5rem;
+    cursor:pointer;
+    border:0.5rem solid rgba(0,0,0,0.3);
+    display:none
+
+
+}
+/*media queries*/
+
+@media (max-width:991px){
+    html{
+        font-size:55%;
+    }
+    header{
+        padding:2rem;
+
+    }
+    section{
+        padding:2rem;
+    }
+    .home{
+        background-position: left;
+    }
+    .home content h3{
+        font-size:5rem;
+    }
+    .home content span{
+        font-size:3rem;
+    }
+    .home content h3{
+        font-size:1rem;
+    }
+    
+
+}
+@media(max-width:900px){
+    
+    .recipe-section{
+        
+               grid-template-columns: repeat(3, 1fr) !important;
+               
+    }
+
+    .reviewsection{
+        grid-template-columns: repeat(3, 1fr) !important;
+
+        gap:20px;
+
+    }
+    .reviewsection .reviewbox p{
+        font-size:15px;
+    }
+    .reviewsection .reviewbox .user .user-info h3{
+        font-size:8px;
+    }
+    .reviewsection .reviewbox .user .user-info span{
+        font-size:2px;
+    }
+
+    .contact .row .image img{
+        padding-left:8px;
+        width:80%;
+    }
+
+    footer .alllinks .link h2{
+        font-size:10px !important;
+    }
+    footer .alllinks .link a{
+        font-size:10px !important;
+    }
+    footer .alllinks .link {
+        margin-right: 20px !important;
+        margin-left: 20px !important;
+
+    }
+
+}
+
+
+@media(max-width:768px){
+    header .fa-bars{
+        display:block; /*to bring the icon back*/
+    }
+    header .navbar{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:#eee;
+        border-top: 0.1rem solid rgba(0,0,0,0.1);
+        clip-path:polygon(0 0,100% 0, 100% 0,0 0 ); /*hide it*/
+
+    }
+
+    header #toggler:checked ~ .navbar{
+        clip-path: polygon(0 0,100% 0, 100% 100%, 0% 100%); /*when the chkbox is clicked navbar will be shown*/
+    }
+
+    header .navbar a{
+        margin:1.5rem;
+        padding:1.5rem;
+        background:#fff;
+        border: 1rem solid rgba(0,0,0,0.1);
+        display:block;
+    }
+
+    .icon-container .icons{
+        flex:1 1 15rem;
+    }
+    .recipe-section{
+        grid-template-columns: 1fr !important;
+    }
+    .reviewsection{
+        grid-template-columns: 1fr !important;
+    }
+    .contact .row {
+        display:flex;
+        flex-direction: column;
+        align-items:center;
+    }
+
+    .contact .row .image {
+        display:none;
+    }
+    .contact .row form{
+        width:100% !important;
+        height:auto;
+    }
+
+    
+
+}
+
+
+
+@media (max-width:460px){ /*under 460px*/
+    html{
+        font-size:50%;
+    }
+    .heading{
+        font-size:3rem;
+    }
+    
+
+}
+
+
+
+
+/*header section ends*/
+/*home section starts*/
+.home{
+    display:flex;
+    align-items:center;
+    min-height:100vh; /*will be at the center of the page*/
+    background-image:url("https://img.freepik.com/premium-photo/bunch-pink-white-tulips-pink-background-spring_764173-342.jpg?w=2000") ;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:center;
+}
+
+.home .content h3{
+    font-size:6rem;
+    color:#333;
+}
+
+.home .content span{
+    font-size:3.5rem;
+    color:var(--pink);
+    padding:1rem 0;
+    line-height:1.5;
+}
+
+.home .content p{
+    font-size:1.5rem;
+    color:#999;
+    padding:1rem 0;
+    width:50%;
+    line-height:1.5;
+
+}
+
+.btn{
+    display:inline-block;
+    margin-top:1rem;
+    border-radius: 5rem;
+    background: #333;
+    color:white;
+    padding: 0.9rem 3.5rem;
+    cursor:pointer;
+    font-size:1.7rem;
+}
+.btn:hover{
+    background-color:var(--pink);
+}
+
+/*about us section*/
+
+
+.heading{
+    padding:1rem;
+    text-align:center;
+    font-size:4rem;
+    margin:2rem 0;
+    background:rgba(255,51,153,0.1);
+}
+
+.heading span{
+    color:var(--pink);
+}
+
+
+/*videos*/
+
+.about .row{
+    display:flex;
+    align-items: center;
+    gap:2rem;
+    flex-wrap: wrap;
+    padding:2rem 0;
+    padding-bottom:3rem;
+}
+
+.about .row .video-container{
+    flex: 1 1 40rem; /*grow shrink base*/
+    position:relative;
+}
+
+.about .row .video-container video{
+    width:100%;
+    border:1.5rem solid white;
+    box-shadow:0.5rem 1rem rgba(0,0,0,0.1);
+    height:100%;
+    object-fit: cover;
+}
+
+.about .row .content {
+    flex:1 1 40rem;
+
+}
+
+.about .row .video-container h3{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%); /*move upwards 50%*/
+    font-size:3rem;
+    
+    background:white;
+    width:100%;
+    padding:1rem 2rem;
+    text-align: center;
+    mix-blend-mode: screen;
+}
+
+
+.about .content h3{
+    font-size:3rem;
+    color:black;
+    
+
+
+}
+.about .content p{
+    font-size:1.5rem;
+    color:#999;
+    padding:5rem 0;
+    padding-top:1rem;
+    
+    line-height:1.5rem;
+
+}
+
+/*icon container*/
+.icon-container{
+    background-color: #eee;
+    display:flex;
+    flex-wrap: wrap;
+    gap:1.5rem;
+    padding-top:5rem;
+    padding-bottom:5rem;
+    
+}
+
+.icon-container .icons{
+    background-color:white;
+    border:1rem solid rgba(0,0,0,0.1);
+    padding:2rem;
+    display:flex;
+    align-items:center;
+    flex:1 1 25rem;
+
+
+}
+
+.icon-container img{
+    height:5rem;
+    margin-right:2rem;
+}
+.icon-container .icons h3{
+    color:#333;
+    padding-bottom:5rem;
+    font-size:1.5rem;
+
+}
+
+.icon-container .icons span{
+    color:#555;
+    font-size:1.3rem;
+}
+
+/*products*/
+
+
+
+.products .box-container{
+    display:grid;
+     grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+     column-gap: 20px;
+
+}
+
+.products .box-container .box{
+    
+    
+    box-shadow: 0.5rem 1.5rem rgba(0,0,0,0.1);
+    border-radius:0.5rem;
+    border:1rem solid rgba(0,0,0,0.1);
+    position:relative;
+    width:20%;
+
+    
+    
+    
+}
+
+.products .box-container .box .discount{
+    position:absolute;
+    top:1rem;
+    left:1rem;
+    padding:7rem 1rem;
+    font-size:2rem;
+    color:var(--pink);
+    background: rgba(255,51,153,0.05);
+    z-index:1;
+    border-radius:0.5rem;
+
+}
+
+.products .box-container .box .discount .image{
+    position:relative;
+    text-align: center;
+    padding-top:2rem;
+    overflow:hidden;
+
+}
+
+
+
+
+
+.products .box-container .box .discount .image .icons{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+
+}
+
+.products .box-container .box .discount .image .icons a{
+    height:rem;
+    line-height: 5rem;
+    font-size:2rem;
+    width:50%;
+    background:var(--pink);
+    color:white;
+
+
+}
+
+
+.products .box-container .box .discount .image .icons .cart-btn{
+    border-left:0.1rem solid #fff7;
+    border-right: 0.1rem solid #fff7;
+    width:100%;
+
+}
+
+.products .box-container .box .discount .image .icons a:hover{
+    background:#333;
+    
+}
+
+
+
+.recipe-section{
+   
+    margin:0 auto; /*auto is for equal space*/
+    display:grid;/*to make cards*/
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    column-gap:50px;
+
+}
+
+
+.recipe-card{
+    background:white;
+    margin:10px 10px;
+    border-radius:0px;
+    border:2px solid #fff;
+    text-align:center;
+    overflow:hidden; /*the content outside the recipe card will be hide*/
+    box-shadow:0 4px 8px rgba(0,0,0,1.9);
+    cursor:pointer;
+
+}
+.recipe-card h2{
+    padding-top:8px;
+ 
+}
+
+
+.recipe-card img{
+   width:60%; /*jitni card ki width utni hi width picture ki ho jayegi*/
+   height:250px;
+   
+   /*
+   border-top-left-radius:20px;
+   border-top-right-radius:20px;
+   */
+
+    
+}
+
+
+.recipe-card a{
+   display:block;
+   text-align:center;
+   text-decoration:none;
+   color:rgb(247, 248, 247);
+   font-size:16px;
+   font-weight:bolder;
+   padding-bottom:10px;
+   padding-top:10px;
+   cursor:pointer;
+   
+    
+}
+
+
+
+@media only screen and (min-width:768px){
+    .menu-icon{
+        display:none;
+    }
+    .nav-list{
+        display:block;
+
+    }
+    
+
+
+
+}
+.products .recipe-section{
+    padding-top:35px;
+    padding-bottom:35px;
+}
+
+.products .recipe-section .recipe-card{
+    height:360px;
+}
+
+.products .recipe-section .recipe-card .flowerinfo h1{
+    font-size: 25px;
+
+}
+.products .recipe-section .recipe-card .flowerinfo .price{
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    gap:7px;
+    
+    
+}
+.products .recipe-section .recipe-card .flowerinfo .price h2{
+    font-size:15px;
+    padding-bottom:8px;
+    color:var(--pink);
+
+}
+.products .recipe-section .recipe-card .flowerinfo .price h4{
+    text-decoration:line-through;
+    color:#979090;
+    font-size:15px;
+    
+}
+
+
+.products .recipe-section .recipe-card a{
+    display:none;
+}
+
+
+
+.products .recipe-section .recipe-card:hover a{ 
+    display:block;
+
+    
+}
+.products .recipe-section .recipe-card:hover {
+    border:4px solid var(--pink);
+    box-shadow: 8px 15px 15px rgba(0,0,0,2.5);
+    transition: 0.8s linear;
+    
+}
+
+.products .recipe-section .recipe-card .addtocarticons{
+    display:flex;
+    justify-content: space-between;
+    background-color: var(--pink);
+    padding-left:20px;
+    padding-right: 20px;
+   
+
+}
+
+
+.reviewsection{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
+    column-gap:50px;
+    margin:50px auto;
+
+
+}
+
+.reviewsection .reviewbox{
+    box-shadow:10px 10px 10px rgba(0,0,0,0.3);
+    cursor:pointer;
+    padding-top:30px;
+    padding-bottom: 30px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border:1.5px solid black;
+    
+    
+
+}
+.reviewsection .reviewbox .reviewstars{
+    color:var(--pink);
+    font-size:20px;
+}
+
+.reviewsection p{
+    font-size:18px;
+    color:#706a6a;
+    margin-top:15px;
+    margin-bottom:20px;
+    
+}
+
+.reviewsection .reviewbox .user img{
+    border-radius: 50%;
+
+
+}
+.reviewsection .reviewbox .user {
+    display:flex;
+    margin-left:10px;
+   
+
+}
+.reviewsection .reviewbox .user .user-info{
+    margin-left:30px;
+}
+.reviewsection .reviewbox .user .user-info h3{
+    font-size:18px;
+
+}
+.reviewsection .reviewbox .user .user-info span{
+    font-size:13px;
+}
+
+.contact .row{
+    display:flex;
+
+}
+.contact .row .image{
+    width:50%;
+}
+.contact .row form{
+    margin-top:30px;
+    height:480px;
+    width:50%;
+    background:white;
+    box-shadow: 5px 15px 15px rgba(0, 0, 0, 0.3);
+   
+    border:2px solid #eee;
+    
+}
+
+.contact .row .box{
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.2);
+    height:50px;
+   width:90%;
+   
+    font-size:15px;
+    margin:0px 20px;
+    margin-top:20px;
+    border:2px solid #eee;
+    padding-left:20px;
+
+    
+}
+.contact .row #one{
+    height:120px;
+}
+.contact .row .btn{
+    margin:30px 20px;
+}
+
+.contact .row .image img{
+    height:510px;
+    padding-left:80px;
+    flex:1 1 40rem;
+}
+
+
+
+footer{
+    margin-top:50px;
+    height: 500px;
+    background-color: #eee;
+
+}
+
+footer .alllinks{
+    display:flex;
+    justify-content: space-between;
+    
+    align-items:center;
+    justify-content: center;
+    
+}
+
+footer .alllinks .link {
+
+    height: 350px;
+    width:60px;
+   
+    
+    margin-top:40px;
+    margin-left:100px;
+    margin-right:100px;
+    
+    
+    
+
+}
+
+footer .alllinks .link h2{
+
+    font-size:25px;
+}
+
+footer .alllinks .link a{
+    font-size:20px;
+    margin-top:12px;
+    margin-bottom:12px;
+    display:block;
+}
+
+
+footer  .credit{
+    text-align:center;
+    font-size:20px;
+    font-weight: 500;
+}
+
+
+
+
+
+
+
